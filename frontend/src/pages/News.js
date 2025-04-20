@@ -2,11 +2,26 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import axios from 'axios'
 import { stripHtml } from '../utils/stripHTML';
+import Card from '../components/Card';
 
-const Card = styled.div`
-  width: 80%;
-  height: 200px;
-  border: 1px solid red;
+const Wrapper = styled.div`
+  width: 100%;
+  padding: 0 14px;
+`
+
+const CardList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`
+
+const Title = styled.span`
+  display: block;
+  text-align: left;
+  font-size: 1.125rem;
+  color: ${({ theme }) => theme.colors.black};
+  font-weight: ${({ theme }) => theme.fonts.weight.bold};
+  margin-bottom: 12px;
 `
 const News = () => {
   const [items, setItems] = useState([]);
@@ -81,22 +96,24 @@ const News = () => {
 
 
   return (
-    <div>
-      {items &&
-        items.map((item)=>{
-          const title = stripHtml(item.title);
-          const content = stripHtml(item.description);
-          return (
-            <Card>
-              <div>{title}</div>
-              <div>{content}</div>
-            </Card>
-          )
-        })
-      }
-      {isLoading && <div>Loading...</div>}
-      <div id="observer" style={{ height: "10px" }}></div>
-    </div>
+    <Wrapper>
+      <Title>Kpop 뉴스</Title>
+      <CardList>
+        {items &&
+          items.map((item)=>{
+            const title = stripHtml(item.title);
+            const content = stripHtml(item.description);
+            return (
+              <Card
+                title={title}
+                content={content}/>
+            )
+          })
+        }
+        {isLoading && <div>Loading...</div>}
+        <div id="observer" style={{ height: "10px" }}></div>
+      </CardList>
+    </Wrapper>
   )
 }
 
