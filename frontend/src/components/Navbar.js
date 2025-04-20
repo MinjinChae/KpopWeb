@@ -11,7 +11,7 @@ const Header = styled.header`
   align-items: center;
   overflow: hidden;
   padding: 16px 30px;
-  position: sticky;
+  // position: sticky;
   top: 0;
 `
 const TabGroup = styled.ul`

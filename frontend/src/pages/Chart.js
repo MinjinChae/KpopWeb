@@ -12,9 +12,9 @@ const Chart = () => {
 
   return (
     <div>
-      <SlideWrapper>
+      {/* <SlideWrapper>
         <SlideList/>
-      </SlideWrapper>
+      </SlideWrapper> */}
     </div>
   )
 }
