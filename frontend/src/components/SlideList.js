@@ -49,6 +49,7 @@ const SlideList = () => {
   // 스크롤 중 슬라이더의 이동거리 계산
   const handleTouchMove = (event) => {
     if (!isDragging) return
+    // event.preventDefault();
     const currentX = event.touches ? event.touches[0].clientX : event.clientX
     const distanceX = currentX - startX  // 이동 거리 = 스크롤 한 위치 - 시작 위치
     setMoveX(distanceX)
