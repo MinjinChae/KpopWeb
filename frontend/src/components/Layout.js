@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `
 const Layout = ({children}) => {
-  const [selectedTab, setSelectedTab] = useState('차트')
+  const [selectedTab, setSelectedTab] = useState('뉴스')
   return (
     <Wrapper>
       <Navbar selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>

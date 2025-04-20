@@ -43,12 +43,12 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
   const [isDragging, setIsDragging] = useState(false) // 드래그 여부 
 
   const tabs = [
-      {name: '차트', path: '/'},
-      {name: 'Whook', path: '/whook'},
-      {name: '이벤트', path: '/event'},
-      {name: '뉴스', path: '/news'},
-      {name: '스토어', path: '/store'},
-      {name: '충전소', path: '/charge'},
+    {name: '뉴스', path: '/'},
+    {name: '차트', path: '/chart'},
+    {name: 'Whook', path: '/whook'},
+    {name: '이벤트', path: '/event'},
+    {name: '스토어', path: '/store'},
+    {name: '충전소', path: '/charge'},
   ]
   // 스크롤 시작 X좌표 저장
   const handleTouchStart = (event) => {
