@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from './Button'
 
 const Wrapper = styled.div`
   width: 100%;
   min-height: 52px;
-  height: 120px;
+  // height: 140px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) , 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -13,6 +14,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   text-align: left;
   color: ${({ theme }) => theme.colors.black};
+  position: relative;
 `
 const Title = styled.span`
   font-size: 1rem;
@@ -33,11 +35,20 @@ const Content = styled.span`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical
 `
-const Card = ({title, content}) => {
+
+const ButtonWrapper = styled.div`
+   align-self: flex-end;
+   margin-top: 10px;
+`
+
+const Card = ({title, content, link}) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
       <Content>{content}</Content>
+      <ButtonWrapper>
+        <Button onClick={() => window.open(link)}/>
+      </ButtonWrapper>
     </Wrapper>
   )
 }

@@ -7,6 +7,7 @@ import Card from '../components/Card';
 const Wrapper = styled.div`
   width: 100%;
   padding: 0 14px;
+  position: relative;
 `
 
 const CardList = styled.div`
@@ -48,6 +49,7 @@ const News = () => {
       start === 1 
       ? setItems(res.data.items) 
       : setItems((prevItems)=>[...prevItems, ...res.data.items])
+      // console.log(res.data.items)
     })
     .catch(err => {
       console.log(err)
@@ -103,10 +105,12 @@ const News = () => {
           items.map((item)=>{
             const title = stripHtml(item.title);
             const content = stripHtml(item.description);
+            const link = item.link
             return (
               <Card
                 title={title}
-                content={content}/>
+                content={content}
+                link={link}/>
             )
           })
         }

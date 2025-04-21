@@ -1,9 +1,11 @@
 import React, { forwardRef } from 'react'
 import styled from 'styled-components'
+import Button from './Button'
 
 const Wrapper = styled.div`
   flex-shrink: 0;
   width: 90%;
+  min-height: 240px;
   height: auto;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
@@ -26,21 +28,26 @@ const TextWrapper = styled.div`
   margin: 14px 10px 10px 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   `
-
+const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 const Title = styled.span`
   font-size: 1rem;
   font-weight: ${({ theme }) => theme.fonts.weight.medium};
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  word-break: break-all;
-  text-align: left;
+  word-break: break-word;
+  // text-align: left;
 `
 
 const Date = styled.span`
   font-size: 1rem;
-  // margin-top: 10px;
+  margin-top: 20px;
   text-align: right;
   white-space: nowrap;
 `
@@ -55,12 +62,15 @@ const Slide = forwardRef(({ src, title, date, link, isDragging }, ref) => {
     }
   }
 
-  return <Wrapper ref={ref} onClick={handleClick}>
+  return <Wrapper ref={ref} >
       <ImgWrapper>
         <img src={src} alt={title}/>
       </ImgWrapper>
       <TextWrapper>
-        <Title>{title}</Title>
+        <TitleWrapper>
+          <Title>{title}</Title>
+          <Button onClick={handleClick}/>
+        </TitleWrapper>
         <Date>{date}</Date>
       </TextWrapper>
     </Wrapper>;

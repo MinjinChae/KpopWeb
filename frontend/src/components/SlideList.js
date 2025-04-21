@@ -8,7 +8,7 @@ import slideImg3 from '../assets/babymonster.jpg'
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 30vh;
+  min-height: 245px;
   overflow: hidden;
   margin: 14px 0 10px 0;
 `
