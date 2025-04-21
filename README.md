@@ -6,6 +6,15 @@
 - Kpop 관련 뉴스(네이버) 무한 스크롤 및 버튼 클릭시 해당 뉴스 페이지 이동
 
 ## 완성 이미지
+### 모바일(459x900)
+![desktop](README.assets/KpopWeb_모바일(459x900).png)
+###  모바일(414x896)
+![desktop](README.assets/KpopWeb_모바일(414x896).png)
+### 태블릿(820x1180)
+![desktop](README.assets/KpopWeb_태블릿(820x1180).png)
+### 데스크탑
+![desktop](README.assets/KpopWeb_데스크탑.png)
+
 
 ## 개발 환경
 - react: v18.2.0
