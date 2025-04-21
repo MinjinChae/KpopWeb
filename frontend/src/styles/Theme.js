@@ -7,7 +7,7 @@ const theme = {
     // footer - 회색
     gray: "#E1E1E1",
     // pink와의 조합 -회색 
-    bgGray: "#9DA09D",
+    bgGray: "#E2E2E2",
     // Navbar - 연한 핑크
     bgPink: "#FFB1B2",
     // 텍스트, 포인트 - 진한 핑크

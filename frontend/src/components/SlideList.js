@@ -5,6 +5,7 @@ import Slide from './Slide'
 import slideImg1 from '../assets/worldchart.png'
 import slideImg2 from '../assets/nct.jpg'
 import slideImg3 from '../assets/babymonster.jpg'
+import Indicator from './Indicator'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -16,6 +17,7 @@ const SliderWrapper = styled.div`
   display: flex;
   gap: 10px;
 `
+
 const SlideList = () => {
 
   const datas= [
@@ -136,6 +138,13 @@ const SlideList = () => {
             ref={index === 0 ? itemRef : null}/>
         ))}
       </SliderWrapper>
+      <Indicator 
+        len={datas.length}
+        currentIndex={currentIndex}
+        onClick={(index)=>{
+          setCurrentIndex(index);
+          setTransition('transform 0.3s ease');
+        }}/>
     </Wrapper>
   )
 }
