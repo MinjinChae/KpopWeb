@@ -2,6 +2,7 @@ import {React, useState} from 'react'
 import styled from 'styled-components'
 import Navbar from './Navbar'
 import SlideList from './SlideList'
+import Footer from './Footer'
 const Wrapper = styled.div`
   // @media (max-width: 1024px) {
   //   width: 960px;
@@ -13,14 +14,20 @@ const Wrapper = styled.div`
   min-height: 100vh;
 `
 
+const Content = styled.main`
+  flex: 1;
+`
+
 const Layout = ({children}) => {
   const [selectedTab, setSelectedTab] = useState('뉴스')
   return (
     <Wrapper>
       <Navbar selectedTab={selectedTab} setSelectedTab={setSelectedTab}/>
-      <SlideList/>
-      
-      {children}
+      <Content>
+        <SlideList />
+        {children}
+      </Content>
+      <Footer/>
     </Wrapper>
   )
 }
