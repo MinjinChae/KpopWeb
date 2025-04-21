@@ -2,7 +2,6 @@ import {React, useState, useEffect, useRef} from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
-
 const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.bgPink};
   width: 100%;
@@ -26,15 +25,13 @@ const TabGroup = styled.ul`
 const Tab = styled.li`
   white-space: nowrap;
   list-style: none;
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.white : theme.colors.black)};
+  color: ${({ $isActive, theme }) => ($isActive ? theme.colors.white : theme.colors.black)};
   font-weight: ${({ theme }) => theme.fonts.weight.bold};
   cursor: pointer;
   -webkit-user-drag: none;
   user-select: none;
 `
-// const Link = styled.link`
 
-// `
 const Navbar = ({selectedTab, setSelectedTab}) => {
   const [startX, setStartX] = useState(0) // 첫 터치 시작 위치
   const [moveX, setMoveX] = useState(0) // 스크롤한 거리
@@ -52,9 +49,10 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
     {name: '스토어', path: '/store'},
     {name: '충전소', path: '/charge'},
   ]
+
   // 스크롤 시작 X좌표 저장
   const handleTouchStart = (event) => {
-    // event.preventDefault(); // 기본 동작 및 touch event와의 충돌 방지 
+    event.preventDefault(); // 기본 동작 및 touch event와의 충돌 방지 
     event.touches ? setStartX(event.touches[0].clientX) : setStartX(event.clientX)
     setIsDragging(true)
     // setStartX(event.touches[0].clientX)
@@ -64,7 +62,7 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
   // 스크롤 중 슬라이더의 이동거리 계산
   const handleTouchMove = (event) => {
     if (!isDragging) return
-    // event.preventDefault(); // 기본 동작 및 touch event와의 충돌 방지
+    event.preventDefault(); // 기본 동작 및 touch event와의 충돌 방지
     const currentX = event.touches ? event.touches[0].clientX : event.clientX
     const distanceX = currentX - startX + prevX // 이동 거리 = 스크롤 한 위치 - 시작 위치 + 이전 이동 거리
     const maxScroll = ref.current.scrollWidth - ref.current.clientWidth // 최대 스크롤 가능 거리 
@@ -81,7 +79,7 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
       setMoveX(-maxScroll); // 마지막 슬라이드에서 더 이동하지 않음
     } else {
       newMoveX = distanceX
-      setMoveX(distanceX); // 계산된 이동 거리를 상태변수에 담아두기
+      setMoveX(newMoveX); // 계산된 이동 거리를 상태변수에 담아두기
     }
     // console.log('moveX:', moveX)
     // console.log(maxScroll,distanceX)
@@ -104,7 +102,7 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
   // 새로고침 시, 네비게이션 위치가 앞으로 돌아가는 것을 방지하기 위한 함수가 필요함!(추후 개발 예정)
   // 새로고침 시, 초기값인 chart 페이지로 돌아가는 것을 방지하기 위해 현재 위치한 URL에 맞는 탭을 설정
   useEffect(() => {
-    console.log(location)
+    // console.log(location)
     const currentTab = tabs.find((tab) => tab.path === location.pathname);
     if (currentTab) {
       setSelectedTab(currentTab.name); 
@@ -112,7 +110,6 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
   }, [location.pathname, setSelectedTab]); 
   
   const handleSelect = (tab) => {
-    // setSelectedTab(tab.name)
     navigate(tab.path)
   }
 
@@ -127,11 +124,11 @@ const Navbar = ({selectedTab, setSelectedTab}) => {
         onMouseMove={handleTouchMove} // 커서가 움직이는 순간
         onMouseUp={handleTouchEnd} // 마우스 버튼이 떼지는 순간 
         onMouseLeave={handleTouchEnd} // 마우스가 벗어나는 순간
-        isDragging={isDragging}>
+        $isDragging={isDragging}>
         {tabs.map((tab)=>(
             <Tab 
               key={tab.name}
-              isActive={selectedTab === tab.name}
+              $isActive={selectedTab === tab.name}
               onClick={()=>handleSelect(tab)}>
               {tab.name}
             </Tab>

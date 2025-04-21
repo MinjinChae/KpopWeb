@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Navbar from './Navbar'
 import SlideList from './SlideList'
 import Footer from './Footer'
+
 const Wrapper = styled.div`
   // @media (max-width: 1024px) {
   //   width: 960px;

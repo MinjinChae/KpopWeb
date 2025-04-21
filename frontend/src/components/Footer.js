@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   align-items: center;
   position: sticky;
 `
+
 const Footer = () => {
   return (
     <Wrapper>

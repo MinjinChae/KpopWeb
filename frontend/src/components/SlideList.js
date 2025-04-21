@@ -1,5 +1,4 @@
 import {React, useState, useEffect, useRef} from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import Slide from './Slide'
 import slideImg1 from '../assets/worldchart.png'
@@ -122,19 +121,19 @@ const SlideList = () => {
         onMouseMove={handleTouchMove} // 커서가 움직이는 순간
         onMouseUp={handleTouchEnd} // 마우스 버튼이 떼지는 순간 
         onMouseLeave={handleTouchEnd} // 마우스가 벗어나는 순간
-        isDragging={isDragging}
+        $isDragging={isDragging}
         style={{
           transform: `translateX(${(-currentIndex * (slideWidth + 10) + moveX + offset)}px)`,
-          transition: isDragging ? 'none' : transition
+          transition:  isDragging ? 'none' : transition
         }}>
         {slideList.map((data, index) => (
           <Slide 
-            key={data.id}
+            key={`${data.id}-${index}`}
             title={data.title}
             date={data.date}
             src={data.img}
             link={data.link}
-            isDragging={isDragging}
+            $isDragging={isDragging}
             ref={index === 0 ? itemRef : null}/>
         ))}
       </SliderWrapper>

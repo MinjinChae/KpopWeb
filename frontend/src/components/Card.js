@@ -5,7 +5,6 @@ import Button from './Button'
 const Wrapper = styled.div`
   width: 100%;
   min-height: 52px;
-  // height: 140px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) , 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -35,7 +34,6 @@ const Content = styled.span`
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical
 `
-
 const ButtonWrapper = styled.div`
    align-self: flex-end;
    margin-top: 10px;

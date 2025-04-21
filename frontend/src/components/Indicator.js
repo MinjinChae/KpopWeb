@@ -12,7 +12,7 @@ const Dot = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: ${({ isActive, theme }) => (isActive ? theme.colors.pointPink : theme.colors.bgGray)};
+  background-color: ${({ $isActive, theme }) => ($isActive ? theme.colors.pointPink : theme.colors.bgGray)};
   cursor: pointer;
 `
 
@@ -22,7 +22,7 @@ const Indicator = ({len, currentIndex, onClick}) => {
       {Array.from({ length: len }).map((_, index) => (
         <Dot
           key={index}
-          isActive={index === currentIndex - 1}
+          $isActive={index === currentIndex - 1}
           onClick={() => onClick(index + 1)}
         />
       ))}
@@ -30,4 +30,5 @@ const Indicator = ({len, currentIndex, onClick}) => {
 
   )
 }
+
 export default Indicator

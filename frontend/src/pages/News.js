@@ -9,13 +9,11 @@ const Wrapper = styled.div`
   padding: 0 14px;
   position: relative;
 `
-
 const CardList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 `
-
 const Title = styled.span`
   display: block;
   text-align: left;
@@ -24,6 +22,7 @@ const Title = styled.span`
   font-weight: ${({ theme }) => theme.fonts.weight.bold};
   margin-bottom: 12px;
 `
+
 const News = () => {
   const [items, setItems] = useState([]);
   const [start, setStart] = useState(1); // naver api 파라미터: 검색 시작 위치(기본값: 1, 최댓값: 1000)
@@ -41,8 +40,8 @@ const News = () => {
       },
       method: 'get', // 통신 방식
       params: {
-        query: '케이팝', // 검색어
-        start: start // 
+        query: 'K팝', // 검색어
+        start: start
       }
     })
     .then(res => {
@@ -78,7 +77,6 @@ const News = () => {
     }
   };
 
-
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
       threshold: 0, //  Intersection Observer의 옵션, 0일 때는 교차점이 한 번만 발생해도 실행
@@ -96,25 +94,25 @@ const News = () => {
     }
   }, []);
 
-
   return (
     <Wrapper>
       <Title>Kpop 뉴스</Title>
       <CardList>
         {items &&
-          items.map((item)=>{
+          items.map((item, index)=>{
             const title = stripHtml(item.title);
             const content = stripHtml(item.description);
             const link = item.link
             return (
               <Card
+                key={`${item.link}-${index}`}
                 title={title}
                 content={content}
                 link={link}/>
             )
           })
         }
-        {isLoading && <div>Loading...</div>}
+        {isLoading && <p>Loading...</p>}
         <div id="observer" style={{ height: "10px" }}></div>
       </CardList>
     </Wrapper>
