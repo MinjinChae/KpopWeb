@@ -5,9 +5,6 @@ import SlideList from './SlideList'
 import Footer from './Footer'
 
 const Wrapper = styled.div`
-  // @media (max-width: 1024px) {
-  //   width: 960px;
-  // }
   margin: 0 auto; 
   display: flex;
   flex-direction: column;
